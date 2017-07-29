@@ -45,6 +45,11 @@ ui <- fluidPage(
           href = "http://deanattali.com/blog/building-shiny-apps-tutorial/",
           target = "_blank")
       ),
+      p("To see the code, check out my",
+        a("Github",
+          href = "https://github.com/wmoir/ClinicalTrials",
+          target = "_blank")
+        ),
       br(),
       strong("These are very preliminary analyses and should not be taken seriously -
               there are almost certainly errors. Any mistakes or subpar coding are my responsibility")
