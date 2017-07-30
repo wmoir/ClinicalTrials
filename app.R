@@ -60,6 +60,19 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   output$funderplot <- renderPlot({
+    # assign unique colors to each class
+    # palette from http://tools.medialab.sciences-po.fr/iwanthue/
+    all_sponsors <- unique(sponsors$class)
+    colors <- c("#c26bbc",
+                "#a6af40",
+                "#59398d",
+                "#56ae6c",
+                "#b54673",
+                "#b3853a",
+                "#6d83da",
+                "#b94d3e")
+    names(colors)  <- all_sponsors
+    
     filtered <-
       sponsors %>%
       filter(n_collab >= input$numcollabInput[1],
@@ -72,7 +85,8 @@ server <- function(input, output) {
       summarise(n = n())
     
     ggplot(filtered, aes(x=year, y=n, color=class)) +
-      geom_line()
+      geom_line() + 
+      scale_color_manual(values = colors, drop=FALSE)
   })
 }
 
